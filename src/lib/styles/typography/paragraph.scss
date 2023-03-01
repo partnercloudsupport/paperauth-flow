@@ -1,0 +1,171 @@
+p {
+	color: var(--theme-text-color);
+}
+
+// .type class extensions
+.type {
+	// Defines --type-scale var
+	// Jumps by 0.125rem (2px)
+	// Starts at 0.75rem (12px)
+	@for $i from 0 through 22 {
+		--type-scale-#{$i}: calc((0.125rem * #{$i}) + 0.75rem);
+	}
+
+	// Creates "scale" classes from above variables' range
+	@for $i from 0 through 22 {
+		&-scale-#{$i} {
+			@extend .type;
+			font-size: var(--type-scale-#{$i});
+		}
+	}
+
+	// Used for field labels in components, error messages, and captions. It should not be used for body copy.
+	// Used as an explanatory helper text - appears below a field title within a component.
+	// Used for legal copy (1 - product pages & 2 - in web pages).
+	&-utility {
+		@extend .type;
+		font-weight: 400;
+
+		&-1 {
+			@extend .type-utility;
+			font-size: var(--type-scale-0);
+			line-height: var(--type-scale-2);
+			letter-spacing: 0.32px;
+		}
+
+		&-2 {
+			@extend .type-utility;
+			font-size: var(--type-scale-1);
+			line-height: var(--type-scale-3);
+			letter-spacing: 0.16px;
+		}
+	}
+
+	&-body {
+		@extend .type;
+		font-weight: 400;
+
+		//  Used in short paragraphs with no more than four lines. More commonly used in components.
+		&-1 {
+			@extend .type-body;
+			font-size: var(--type-scale-1);
+			line-height: var(--type-scale-4);
+			letter-spacing: 0.16px;
+
+			// Used when less than 3 lines
+			&-compact {
+				@extend .type-body-1;
+				line-height: var(--type-scale-3);
+			}
+		}
+		//  Used in expressive components, such as button and link.
+		&-2 {
+			@extend .type-body;
+			font-size: var(--type-scale-2);
+			line-height: var(--type-scale-6);
+			letter-spacing: 0px;
+
+			// Used when less than 3 lines
+			&-compact {
+				@extend .type-body-2;
+				line-height: var(--type-scale-5);
+			}
+		}
+	}
+
+	&-paragraph {
+		@extend .type;
+		letter-spacing: 0;
+
+		&-1 {
+			@extend .type-paragraph;
+			font-size: var(--type-scale-10);
+			line-height: var(--type-height-14);
+
+			@media (max-width: var(--breakpoint-l)) {
+				font-size: var(--type-scale-8);
+				line-height: var(--type-height-12);
+			}
+		}
+	}
+
+	&-quote {
+		@extend .type;
+		letter-spacing: 0;
+
+		&-1 {
+			@extend .type-quote;
+			font-size: var(--type-scale-10);
+			line-height: var(--type-height-14);
+			font-weight: 300;
+
+			@media (max-width: var(--breakpoint-xl)) {
+				font-size: var(--type-scale-8);
+				line-height: var(--type-height-12);
+				font-weight: 300;
+			}
+			@media (max-width: var(--breakpoint-l)) {
+				font-size: var(--type-scale-6);
+				line-height: var(--type-height-9);
+				font-weight: 400;
+			}
+		}
+
+		&-2 {
+			@extend .type-quote;
+			font-size: var(--type-scale-18);
+			line-height: var(--type-height-22);
+
+			@media (max-width: var(--breakpoint-l)) {
+				font-size: var(--type-scale-15);
+				line-height: var(--type-height-19);
+			}
+			@media (max-width: var(--breakpoint-m)) {
+				font-size: var(--type-scale-12);
+				line-height: var(--type-height-16);
+			}
+		}
+	}
+
+	&-decoration {
+		@extend .type;
+		letter-spacing: 0;
+
+		font-size: 0.6125rem;
+		text-transform: uppercase;
+	}
+
+	&-error {
+		@extend .type;
+		color: var(--danger);
+	}
+
+	// Font weight
+	&-light {
+		@extend .type;
+		font-weight: 300;
+	}
+	&-regular {
+		@extend .type;
+		font-weight: 400;
+	}
+	&-semibold {
+		@extend .type;
+		font-weight: 600;
+	}
+	&-bold {
+		@extend .type;
+		font-weight: 700;
+	}
+
+	// Font style
+	&-italic {
+		@extend .type;
+		font-style: italic;
+	}
+
+	&-uppercase {
+		@extend .type;
+		text-transform: uppercase;
+	}
+}

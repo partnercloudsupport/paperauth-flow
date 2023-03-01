@@ -1,0 +1,18 @@
+@import './global/variables.scss';
+
+@import './global/global.scss';
+@import './global/root.scss';
+
+// holds all the color variables
+@import './themes/light.scss';
+
+// Classes a.k.a. mini-tailwind || ORDER IS IMPORTANT
+@import './classes/flex.scss';
+@import './classes/grid.scss';
+@import './classes/block.scss';
+
+// Paragraphs and Headings classes
+@import './typography/heading.scss';
+@import './typography/paragraph.scss';
+
+@import './motion/animations.scss';

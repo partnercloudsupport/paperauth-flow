@@ -1,0 +1,31 @@
+:root[data-theme='light'] {
+	--theme-background: var(--grey-0);
+	--theme-border-color: var(--grey-30);
+
+	--theme-background--disabled: var(--grey-80);
+	--theme-text--disabled: var(--grey-60);
+
+	--theme-text-color: var(--grey-90);
+	--theme-text-color--light: var(--grey-70);
+	--theme-text-color--inverse: var(--grey-10);
+
+	--theme-link-color: var(--primary);
+	--theme-link-color--hover: var(--blue-60);
+	--theme-link-color--inverse: var(--grey-0);
+
+	--theme-button-primary-background-color: var(--blue-60);
+	--theme-button-primary-background-color--hover: var(--blue-70);
+	--theme-button-primary-text-color: var(--grey-0);
+	--theme-button-primary-text-color--hover: var(--grey-0);
+	--theme-button-secondary-background-color: var(--grey-80);
+	--theme-button-secondary-background-color--hover: var(--grey-70);
+	--theme-button-secondary-text-color: var(--grey-0);
+	--theme-button-secondary-text-color--hover: var(--grey-0);
+	--theme-button-tertiary-background-color: transparent;
+	--theme-button-tertiary-background-color--hover: var(--blue-70);
+	--theme-button-tertiary-text-color: var(--blue-60);
+	--theme-button-tertiary-text-color--hover: var(--grey-0);
+
+	--theme-input-background-color: var(--grey-10);
+	--theme-input-text-color: var(--grey-90);
+}

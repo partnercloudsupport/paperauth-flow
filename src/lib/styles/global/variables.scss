@@ -1,0 +1,24 @@
+:root {
+	--max-document-width: 82rem; // ----Page's inner container (1312px)
+	// Breakpoints
+	--breakpoint-m: 42rem; // ----Mobile (672px)
+	--breakpoint-l: 66rem; // ----Laptops/tablets (1056px)
+	--breakpoint-xl: 82rem; // ---Laptops (1312px)
+	--breakpoint-max: 99rem; // --Large screens (1584px)
+
+	// Durations
+	--fastest: 70ms;
+	--faster: 110ms;
+	--fast: 150ms;
+	--moderate: 240ms;
+	--slow: 400ms;
+	--slowest: 700ms;
+
+	// Curves
+	--standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+	--standard-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+	--entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+	--entrance-expressive: cubic-bezier(0, 0, 0.3, 1);
+	--exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+	--exit-expressive: cubic-bezier(0.4, 0.14, 1, 1);
+}

@@ -1,0 +1,39 @@
+{
+	"contracts": {
+		"PaperAuth": {
+			"source": "../cadence/contracts/PaperAuth.cdc",
+			"aliases": {
+				"emulator": "f8d6e0586b0a20c7",
+				"testnet": "f733999e4619eaaa"
+			}
+		}
+	},
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"PaperAuth": {
+			"address": "f733999e4619eaaa",
+			"key": {
+				"type": "file",
+				"location": "PaperAuth.pkey"
+			}
+		},
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": "98af21d173ce78d3894e926c4633ea4d92495150418f5cc1d97e29898ba58858"
+		}
+	},
+	"deployments": {
+		"emulator": {
+			"emulator-account": ["PaperAuth"]
+		},
+		"testnet": {
+			"PaperAuth": ["PaperAuth"]
+		}
+	}
+}
+

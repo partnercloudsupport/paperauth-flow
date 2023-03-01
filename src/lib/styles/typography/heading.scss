@@ -1,0 +1,134 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--theme-text-color);
+}
+
+// .head class extensions
+.head {
+	// Defines --head-scale var
+	// Jumps by 0.125rem (2px)
+	@for $i from 0 through 36 {
+		--head-scale-#{$i}: calc((0.125rem * #{$i}) + 1.25rem);
+	}
+
+	letter-spacing: 0px;
+	color: var(--theme-text-color);
+
+	// Creates "scale" classes from above variables' range
+	@for $i from 0 through 36 {
+		&-scale-#{$i} {
+			@extend .head;
+			font-size: var(--head-scale-#{$i});
+		}
+	}
+
+	&-component {
+		@extend .head;
+
+		&-1 {
+			@extend .head-component;
+			font-size: var(--head-scale-2);
+			line-height: var(--head-scale-4);
+
+			@media (max-width: var(--breakpoint-xl)) {
+				font-size: var(--head-scale-0);
+			}
+		}
+	}
+
+	&-layout {
+		@extend .head;
+
+		&-1 {
+			@extend .head-layout;
+			font-size: var(--head-scale-6);
+			line-height: var(--head-scale-10);
+		}
+
+		&-2 {
+			@extend .head-layout;
+			font-size: var(--head-scale-14);
+			line-height: var(--head-scale-18);
+
+			@media (max-width: 66rem) {
+				font-size: var(--head-scale-11);
+				line-height: var(--head-scale-15);
+			}
+			@media (max-width: 42rem) {
+				font-size: var(--head-scale-8);
+				line-height: var(--head-scale-12);
+			}
+		}
+	}
+
+	&-display {
+		@extend .head;
+
+		&-1 {
+			@extend .head-display;
+			// font-size: var(--head-scale-28);
+			// line-height: var(--head-scale-33);
+			font-size: var(--head-scale-23);
+			line-height: var(--head-scale-28);
+
+			@media (max-width: var(--breakpoint-xl)) {
+				font-size: var(--head-scale-20);
+				line-height: var(--head-scale-25);
+			}
+			@media (max-width: 66rem) {
+				font-size: var(--head-scale-16);
+				line-height: var(--head-scale-21);
+			}
+			@media (max-width: 42rem) {
+				font-size: var(--head-scale-10);
+				line-height: var(--head-scale-15);
+			}
+		}
+		&-2 {
+			@extend .head-display;
+			font-size: var(--head-scale-36);
+			line-height: var(--head-scale-32);
+
+			@media (max-width: var(--breakpoint-xl)) {
+				font-size: var(--head-scale-28);
+				line-height: var(--head-scale-33);
+			}
+			@media (max-width: 66rem) {
+				font-size: var(--head-scale-20);
+				line-height: var(--head-scale-25);
+			}
+			@media (max-width: 42rem) {
+				font-size: var(--head-scale-11);
+				line-height: var(--head-scale-15);
+			}
+		}
+	}
+
+	// Font weight
+	&-light {
+		@extend .head;
+		font-weight: 300;
+	}
+	&-regular {
+		@extend .head;
+		font-weight: 400;
+	}
+	&-semibold {
+		@extend .head;
+		font-weight: 500;
+	}
+	&-bold {
+		@extend .head;
+		font-weight: 600;
+	}
+
+	// Font style
+	&-italic {
+		@extend .head;
+		font-style: italic;
+	}
+}
