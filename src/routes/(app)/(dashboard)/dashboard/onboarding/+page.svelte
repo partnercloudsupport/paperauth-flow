@@ -60,7 +60,7 @@
 			.from('profiles')
 			.update({ has_signature: true })
 			.eq('user_id', user?.id);
-		if (!error) goto(pages.dashboard);
+		if (!error) window.location.href = pages.dashboard;
 		else {
 			submitError =
 				'Could not access the database, but your signature was stored on the blockchain. Please contact support.';
