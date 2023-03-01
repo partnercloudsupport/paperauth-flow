@@ -1,5 +1,5 @@
 <script lang="ts">
-	import 'lib/styles/main.scss';
+	import '$lib/styles/main.scss';
 	import { onMount } from 'svelte';
 	import { theme } from 'lib/utils/stores/theme';
 
@@ -11,3 +11,6 @@
 <main>
 	<slot />
 </main>
+
+<style lang="scss">
+</style>

@@ -7,7 +7,7 @@
 	let sectionsHeight: number[] = [];
 </script>
 
-<Seo title="PaerAuth | Home" description="World's safest eSignature solution" />
+<Seo title="PaperAuth | Home" description="World's safest eSignature solution" />
 
 <svelte:window bind:scrollY />
 <div bind:clientHeight={sectionsHeight[0]}>
