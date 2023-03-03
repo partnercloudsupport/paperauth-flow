@@ -6,10 +6,9 @@
 	import { supabaseClient } from 'lib/utils/supabase';
 	import { flowUser } from 'flow/stores';
 	import { onMount } from 'svelte';
+	import { pages } from 'lib/utils/pages';
 	import { page } from '$app/stores';
 	import SignPad from './components/SignPad.svelte';
-	import { goto } from '$app/navigation';
-	import { pages } from 'lib/utils/pages';
 
 	$: w = 0;
 
@@ -18,7 +17,7 @@
 
 	let screenOrientation: 'portrait' | 'landscape' = 'portrait';
 
-	let currentStep: 'create' | 'authenticate' | 'sign' = 'create';
+	let currentStep: 'create' | 'authenticate' | 'sign' | 'retry' = 'create';
 
 	const user: User | null = $page.data.session?.user ?? null;
 
@@ -46,25 +45,30 @@
 
 		console.log('Submitting signature to the blockchain');
 
-		const result = await storeSignature(signature);
-		if (!result) {
+		const { error, result } = await storeSignature(signature);
+		if (error) {
 			submitError =
 				'Could not access the blockchain. You can read the error in the console. Please contact support if the error persist.';
 			loading = false;
 			return;
 		}
 
+		await updateHasSignature();
+
+		loading = false;
+	}
+
+	async function updateHasSignature() {
+		loading = true;
 		console.log('Updating database');
 
-		const { error } = await supabaseClient
+		const { error: dbError } = await supabaseClient
 			.from('profiles')
 			.update({ has_signature: true })
 			.eq('user_id', user?.id);
-		if (!error) window.location.href = pages.dashboard;
-		else {
-			submitError =
-				'Could not access the database, but your signature was stored on the blockchain. Please contact support.';
-		}
+
+		if (!dbError) window.location.href = pages.dashboard;
+		else currentStep = 'retry';
 
 		loading = false;
 	}
@@ -152,7 +156,7 @@
 		<div class="step column">
 			<div class="row j--sb a--center">
 				<p class="head-layout-1 type-bold">Create your eSignature</p>
-				<Pen size={24} title="Safe" />
+				<Pen size={24} title="Pen" />
 			</div>
 			<div class="step__inner column">
 				<p class="step__description type-body-2">
@@ -198,6 +202,23 @@
 						submitSignature(e.detail);
 					}}
 				/>
+			{/if}
+		</div>
+	{:else if currentStep === 'retry'}
+		<div class="step column">
+			<div class="row j--sb a--center">
+				<p class="head-layout-1 type-bold">Try again</p>
+				<Pen size={24} title="Pen" />
+			</div>
+			<p class="step__description type-body-2">
+				Your eSignature was created, but we couldn't tell our servers about it. Try updating your
+				profile by clicking the button below.
+			</p>
+
+			{#if !loading}
+				<Button on:button_click={updateHasSignature}>Try again</Button>
+			{:else}
+				<SpinningWheel />
 			{/if}
 		</div>
 	{/if}

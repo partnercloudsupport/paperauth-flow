@@ -54,9 +54,14 @@ export async function storeSignature(signature) {
 			fcl.limit(100)
 		]);
 		const result = await fcl.tx(tx).onceFinalized();
-		return result;
+		return {
+			error: null,
+			result: result
+		};
 	} catch (e) {
-		console.log(e);
-		return null;
+		return {
+			error: e,
+			result: null
+		};
 	}
 }
