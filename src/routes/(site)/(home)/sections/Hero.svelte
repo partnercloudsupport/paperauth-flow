@@ -12,7 +12,7 @@
 <div class="hero row a--center">
 	<div class="hero__content column j--sb">
 		<div class="hero__content-heading">
-			<h1 class="head-display-1 head-light">World's safest eSignatures solution</h1>
+			<h1 class="head-display-1 head-light">World's safest eSignature solution</h1>
 			<p>
 				Easily send, sign, and track legally-binding documents with our blockchain-backed
 				infrastructures.
